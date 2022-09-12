@@ -2,6 +2,7 @@
 #define __UPLOADSERVICE__H__
 #include <string>
 #include <iostream>
+#include <fstream>
 #include <map>
 #include <xmlrpc-c/base.hpp>
 #include <xmlrpc-c/client_simple.hpp>
@@ -29,8 +30,6 @@ public:
 };
 
 
-
-
 class CnBlog : public Service {
 private:
     std::string blogId;
@@ -42,6 +41,9 @@ public:
         Service(_userName, _passWd, _blogAddr, _url){}
 
     int UpBlog(std::map<std::string, std::string>&  nPost);
+    int UpBlog(std::map<std::string, xmlrpc_c::value>&  nPost);
+    std::string NewMediaObj(const std::string& ss);
+    std::string NewMediaObj(std::ifstream& ift);
     void GetUserBlogs();
 };
 

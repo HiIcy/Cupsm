@@ -15,16 +15,21 @@ target_sources(
 
 target_include_directories(
         service_static
-        PUBLIC
+        PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}
         /home/wxk/pkg/xmlrpc/include)
 
 target_sources(
        service_static
-       PUBLIC
+       PRIVATE
        ${CMAKE_CURRENT_LIST_DIR}/../constants/constants.cpp
        ${CMAKE_CURRENT_LIST_DIR}/UploadService.cpp)
 
+target_link_directories(
+        service_static
+        PUBLIC
+        /home/wxk/pkg/xmlrpc/lib)
+       
 #target_link_libraries(service libxmlrpc_client++.a libxmlrpc_client.a libxmlrpc++.a libxmlrpc_util++.a libxmlrpc.a libxmlrpc_xmlparse.a libxmlrpc_xmltok.a libxmlrpc_util.a pthread curl libxmlrpc_packetsocket.a)
 target_link_libraries(service_static libxmlrpc_client++.a libxmlrpc_client.a libxmlrpc++.a libxmlrpc_util++.a libxmlrpc.a libxmlrpc_xmlparse.a libxmlrpc_xmltok.a libxmlrpc_util.a pthread curl libxmlrpc_packetsocket.a)
 
